@@ -1,3 +1,9 @@
+---
+project: kekes
+pages:
+ - title: home
+   href: home
+---
 
 <!DOCTYPE html>
 <html lang="en">
@@ -5,7 +11,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>kekes</title>
+    <title>{{project}}</title>
 </head>
 <body>
     <style>
@@ -21,13 +27,13 @@
     </style>
 
     <div class="container">
-        <h1>kekes</h4>
+        <h1>{{project}}</h4>
         
-            
+            {% for page in pages %}
         
-        <a href="home">home</a>
+        <a href="{{page.href}}">{{page.title}}</a>
 
-        
+        {% endfor %}
     </div>
 
 </body>

@@ -40,6 +40,13 @@ gulp.task('nunjucks', function() {
 			end_with_newline: true
 		}))
 		.pipe(gulp.dest('./app/html'))
+});
+
+gulp.task('nunjucks:index', function() {
+	return gulp.src('./app/templates/index.html')
+		.pipe(frontMatter({property: 'data' }))
+		.pipe(nunjucksRender())
+		.pipe(gulp.dest('./app'))
 })
 
 gulp.task('styles', function() {
@@ -80,7 +87,7 @@ gulp.task('rsync', function() {
 
 gulp.task('watch', ['styles', 'js', 'browser-sync'], function() {
 	gulp.watch('app/'+syntax+'/**/*.'+syntax+'', ['styles']);
-	gulp.watch(['app/pages/**/*.html', 'app/templates/**/*.html'], ['nunjucks'])
+	gulp.watch(['app/pages/**/*.html', 'app/templates/**/*.html'], ['nunjucks', 'nunjucks:index'])
 	gulp.watch(['libs/**/*.js', 'app/js/common.js'], ['js']);
 	gulp.watch('app/html/**/*.html', browserSync.reload)
 });
