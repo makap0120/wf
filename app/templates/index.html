@@ -29,9 +29,9 @@ pages:
     <div class="container">
         <h1>{{project}}</h4>
         
-            {% for page in pages %}
+        {% for page in pages %}
         
-        <a href="{{page.href}}">{{page.title}}</a>
+            <a href="html/{{page.href}}.html">{{page.title}}</a>
 
         {% endfor %}
     </div>
